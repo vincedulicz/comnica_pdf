@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="hu">
+<style>
+    body {font-family: 'Arial', sans-serif;display: flex;justify-content: center;align-items: center;height: 100vh;margin: 0;background: linear-gradient(to bottom, #00d084 50%, #ffffff 50%);}.container {background: white;padding: 30px;border-radius: 10px;box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);text-align: center;width: 350px;}h1 {color: #333;font-size: 24px;margin-bottom: 20px;}input[type="file"] {display: block;margin: 10px auto;}button {background-color: #00d084;color: white;border: none;padding: 10px 20px;border-radius: 5px;cursor: pointer;font-size: 16px;}button:hover {background-color: #00a76f;}button:disabled {background-color: #cfcfcf;cursor: not-allowed;}.result {margin-top: 20px;font-size: 16px;color: #333;}a {color: #00d084;text-decoration: none;font-weight: bold;}
+</style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Feltöltés</title>
+    <link rel="icon" type="image/png" href="https://comnica.hu/wp-content/uploads/2022/12/cropped-favicon-2-192x192.png"/>
+</head>
+<body>
+<div class="container">
+    <h1>PDF Feltöltés és Aláírás</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="pdf" id="fileInput" required>
+        <button type="submit" id="submitButton" disabled>Feltöltés</button>
+    </form>
+    {{if .SignURL}}
+    <div class="result">
+        <p><strong>Rekord azonosító:</strong> {{.SessionID}}</p>
+        <p><strong>Aláírási link:</strong> <a href="{{.SignURL}}" target="_blank">Kattints ide</a></p>
+    </div>
+    {{end}}
+</div>
+
+<script>
+    const fileInput = document.getElementById('fileInput');
+    const submitButton = document.getElementById('submitButton');
+
+    fileInput.addEventListener('change', function() {
+        submitButton.disabled = !fileInput.files.length;
+    });
+</script>
+</body>
+</html>
