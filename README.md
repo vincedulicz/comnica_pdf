@@ -59,4 +59,4 @@ go run main.go
 - **`services/session.go`**: A session létrehozásának logikája, amely JSON payload segítségével kommunikál a szerverrel.
 - **`handlers/upload.go`**: A HTTP feltöltési űrlap és feltöltési folyamat kezelése. Itt történik a fájl olvasása, ideiglenes tárolása, és a session indítása.
 - **`templates/index.html`**: Egy egyszerű webes felület a PDF feltöltéséhez.
-- - **`tests/main_test.go`**: Főbb funkciók tesztelése.
+- **`tests/main_test.go`**: Főbb funkciók tesztelése.
